@@ -1,0 +1,19 @@
+{
+  "name": "come.unice.mbds.chen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chendatao407786/Projet_NodeJs.git"
+  },
+  "author": "CHEN Datao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chendatao407786/Projet_NodeJs/issues"
+  },
+  "homepage": "https://github.com/chendatao407786/Projet_NodeJs#readme"
+}
