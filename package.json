@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/chendatao407786/Projet_NodeJs/issues"
   },
-  "homepage": "https://github.com/chendatao407786/Projet_NodeJs#readme"
+  "homepage": "https://github.com/chendatao407786/Projet_NodeJs#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
 }
