@@ -25,13 +25,21 @@ const PluginSchema = new Schema({
     },
     tag: {
         type: [String]
-    }
-    // parametres : [{
-    //     control : String,
-    //     default : Number,
-    //     min : Number,
-    //     max : Number
-    // }]    
+    },
+    parametres : [{
+        control : {
+            type : String
+        },
+        default : {
+            type : Number
+        },  
+        min : {
+            type : Number
+        },
+        max : {
+            type : Number
+        }
+    }]    
 })
 
 module.exports = Pligin = mongoose.model('Plugin',PluginSchema);
