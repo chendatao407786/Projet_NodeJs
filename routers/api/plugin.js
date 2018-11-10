@@ -11,9 +11,18 @@ router.get('/',(req,res) => {
 router.post('/',(req,res) => {
     console.log("post method called");
     const newPlugin = new Plugin({
-        seller : req.body.seller
+        seller : {
+            name : req.body.seller.name,
+            siteSellerUrl : req.body.seller.siteSellerUrl
+        },
+        creator : req.body.creator,
+        imageUrl : req.body.imageUrl,
+        description : req.body.description,
+        tag : req.body.tag,
+        parametres : req.body.parametres
     });
     newPlugin.save().then(plugin => res.json(plugin));
+    
 });
 
 router
