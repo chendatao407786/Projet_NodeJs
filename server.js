@@ -10,7 +10,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
     next();
 });
-const url = 'mongodb://localhost:27017/buffabeaugosse';
+const url = 'mongodb://localhost:27017/dataobeaugosse';
 mongoose
     .connect(url)
     .then(() => console.log('connected'))
