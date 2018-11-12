@@ -11,9 +11,7 @@ class Upload extends Component {
         const font_weight = {
             fontWeight: '100'
         };
-        const add_button = {
-            borderRadius: '50%'
-        };
+        
         const divStyle = {
             width: '60%',
             heigh: 'auto',
@@ -48,12 +46,13 @@ class Upload extends Component {
                         <textarea style={font_weight} className="form-control" id="description" rows="3"></textarea>
                     </div>
                     <div className="form-group">
+                        <label style={labelStyle}>Tags:</label>
                         <Tag />
                     </div>
                     <div className="form-group">
                         <label style={labelStyle} htmlFor="addParametreButton">Parametres:</label>
                         <Parametre />
-                        <button style={add_button} className="btn btn-primary btn-lg">+</button>
+                        
                     </div>
 
                     <button className="btn btn-primary btn-lg btn-block" type="submit">Submit form</button>
