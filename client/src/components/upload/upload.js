@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Tag from './tag';
+import Parametre from './parametre';
 class Upload extends Component {
     render() {
         const labelStyle = {
@@ -9,7 +10,10 @@ class Upload extends Component {
 
         const font_weight = {
             fontWeight: '100'
-        }
+        };
+        const add_button = {
+            borderRadius: '50%'
+        };
         const divStyle = {
             width: '60%',
             heigh: 'auto',
@@ -32,22 +36,27 @@ class Upload extends Component {
                         <input style={font_weight} id="creator" className="form-control" placeholder="Creator's name" />
                     </div>
                     <div className="form-group">
-                    <label style={labelStyle} htmlFor="image">Plugin Image:</label>
+                        <label style={labelStyle} htmlFor="image">Plugin Image:</label>
                         <div className="custom-file" id="image">
                             <input style={font_weight} type="file" className="custom-file-input" id="validatedCustomFile" required />
                             <label style={font_weight} className="custom-file-label" htmlFor="validatedCustomFile">Choose file...</label>
                             <div className="invalid-feedback">Example invalid custom file feedback</div>
                         </div>
-                    </div>                    
+                    </div>
                     <div className="form-group">
                         <label style={labelStyle} htmlFor="description">Description:</label>
                         <textarea style={font_weight} className="form-control" id="description" rows="3"></textarea>
                     </div>
                     <div className="form-group">
-                        <Tag/>
+                        <Tag />
                     </div>
-                    
-                    <button className="btn btn-primary" type="submit">Submit form</button>
+                    <div className="form-group">
+                        <label style={labelStyle} htmlFor="addParametreButton">Parametres:</label>
+                        <Parametre />
+                        <button style={add_button} className="btn btn-primary btn-lg">+</button>
+                    </div>
+
+                    <button className="btn btn-primary btn-lg btn-block" type="submit">Submit form</button>
                 </form>
             </div>
         )
