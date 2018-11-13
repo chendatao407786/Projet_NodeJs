@@ -31,17 +31,24 @@ class Tag extends Component {
     this.handleAddition = this.handleAddition.bind(this);
     this.handleDrag = this.handleDrag.bind(this);
     this.handleTagClick = this.handleTagClick.bind(this);
+
   }
 
   handleDelete(i) {
     const { tags } = this.state;
     this.setState({
       tags: tags.filter((tag, index) => index !== i),
+    }, () => {
+      this.props.action(this.state.tags);
     });
+
+
   }
 
   handleAddition(tag) {
-   this.setState(state => ({ tags: [...state.tags, tag] }));
+    this.setState(state => ({ tags: [...state.tags, tag] }), () => {
+      this.props.action(this.state.tags);
+    });
   }
 
   handleDrag(tag, currPos, newPos) {
