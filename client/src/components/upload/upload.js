@@ -6,13 +6,17 @@ class Upload extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sellerName: null,
-            sellerUrl: null,
+            seller:{
+                sellerName:null,
+                sellerUrl:null
+            },
             creator: null,
             image: null,
             description: null,
             tags:[],
-            parametres:[]
+            parametres:[],
+            sellerName: null,
+            sellerUrl: null
         }
     }
     handleSubmit = (event) => { 
