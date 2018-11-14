@@ -6,22 +6,34 @@ class Upload extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            seller:{
-                sellerName:null,
-                sellerUrl:null
-            },
+
+            sellerName:null,
+            sellerUrl:null,
             creator: null,
             image: null,
             description: null,
             tags:[],
-            parametres:[],
-            sellerName: null,
-            sellerUrl: null
+            parametres:[]
         }
     }
     handleSubmit = (event) => { 
         event.preventDefault();
-        console.log(this.state);
+        let data = {
+            seller : {
+                name : this.state.sellerName,
+                siteSellerUrl : this.state.sellerUrl
+            },
+            creator : this.state.creator,
+            imageUrl : this.state.image,
+            description : this.state.description,
+            tag : this.state.tags,
+            parametres : this.state.parametres
+        }
+        console.log(data);
+        fetch('/api/plugin', {
+            method: 'POST',
+            body: data
+          });
     }
     handleInputChange = (event) => {
         event.preventDefault();
