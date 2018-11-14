@@ -12,7 +12,7 @@ router.post('/',(req,res) => {
     console.log("post method called");
     const newPlugin = new Plugin({
         seller : {
-            name : req.body.seller.sellerName,
+            name : req.body.seller.name,
             siteSellerUrl : req.body.seller.siteSellerUrl
         },
         creator : req.body.creator,
