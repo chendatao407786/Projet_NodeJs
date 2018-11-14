@@ -7,38 +7,55 @@ class Upload extends Component {
         super(props);
         this.state = {
 
-            sellerName:null,
-            sellerUrl:null,
+            sellerName: null,
+            sellerUrl: null,
             creator: null,
             image: null,
             description: null,
-            tags:[],
-            parametres:[]
+            tags: [],
+            parametres: []
         }
     }
-    handleSubmit = (event) => { 
+    handleSubmit = (event) => {
         event.preventDefault();
         let data = {
-            seller : {
-                name : this.state.sellerName,
-                siteSellerUrl : this.state.sellerUrl
+            seller: {
+                name: this.state.sellerName,
+                siteSellerUrl: this.state.sellerUrl
             },
-            creator : this.state.creator,
-            imageUrl : this.state.image,
-            description : this.state.description,
-            tag : this.state.tags,
-            parametres : this.state.parametres
+            creator: this.state.creator,
+            imageUrl: this.state.image,
+            description: this.state.description,
+            tag: this.state.tags.text,
+            parametres: this.state.parametres
         }
         console.log(data);
+        // fetch('/api/plugin', {
+        //     method: 'POST',
+        //     body: data
+        //   });
         fetch('/api/plugin', {
             method: 'POST',
-            body: data
-          });
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).then(function(response) {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response;
+        }).then(function(response) {
+            console.log("ok");
+        }).catch(function(error) {
+            console.log(error);
+        });
     }
     handleInputChange = (event) => {
         event.preventDefault();
         this.setState({
-            [event.target.name] : event.target.value
+            [event.target.name]: event.target.value
         })
     }
     updateTags = (tags) => {
@@ -48,7 +65,7 @@ class Upload extends Component {
     }
     updateParametres = (parametres) => {
         this.setState({
-            parametres:parametres
+            parametres: parametres
         })
     }
 
@@ -73,7 +90,7 @@ class Upload extends Component {
                     <label style={labelStyle} htmlFor="seller">Seller:</label>
                     <div className="form-row" id="seller">
                         <div className="form-group col-md-6">
-                            <input style={font_weight} type="text" className="form-control" id="sellerName" name="sellerName" placeholder="Enter your name" onChange={this.handleInputChange}/>
+                            <input style={font_weight} type="text" className="form-control" id="sellerName" name="sellerName" placeholder="Enter your name" onChange={this.handleInputChange} />
                         </div>
                         <div className="form-group col-md-6">
                             <input onChange={this.handleInputChange} style={font_weight} type="text" className="form-control" id="sellerUrl" name="sellerUrl" placeholder="Enter the web site URL of your company" />
@@ -98,14 +115,14 @@ class Upload extends Component {
                     <div className="form-group">
                         <label style={labelStyle} htmlFor="addParametreButton">Parametres:</label>
                         <ParametreList action={this.updateParametres} name="parametre" />
-                    </div> 
+                    </div>
                     <div className="form-group">
                         <label style={labelStyle}>Tags:</label>
-                        <Tag action={this.updateTags}/>
+                        <Tag action={this.updateTags} />
                     </div>
                     <button className="btn btn-primary btn-lg btn-block" type="submit">Submit form</button>
                 </form>
-                
+
             </div>
         )
     }
