@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Tag from './tag';
-import Parametre from './parametre';
+// import Parametre from './parametre';
+import ParametreList from './parametreList';
 class Upload extends Component {
     constructor(props) {
         super(props);
@@ -79,11 +80,11 @@ class Upload extends Component {
                     </div>
                     <div className="form-group">
                         <label style={labelStyle} htmlFor="addParametreButton">Parametres:</label>
-                        <Parametre name="parametre" />
+                        <ParametreList name="parametre" />
                     </div>
-
                     <button className="btn btn-primary btn-lg btn-block" type="submit">Submit form</button>
                 </form>
+                
             </div>
         )
     }
