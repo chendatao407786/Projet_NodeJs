@@ -45,10 +45,17 @@ class ParametreList extends Component {
             parametres: [...state.parametres, newParametre]
 
         }), console.log(this.state));
-        let inputs = document.getElementsByTagName("input");
+        let inputs = document.getElementById("addParametre").getElementsByTagName("input");
+        console.log(inputs);
         for (var item of inputs) {
             item.value = "";
         }
+        this.setState({
+            controler:'',
+            default:'',
+            min:'',
+            max:''
+        })
     }
 
     removeParametre(parametre) {
