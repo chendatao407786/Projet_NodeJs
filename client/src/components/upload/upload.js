@@ -11,8 +11,8 @@ class Upload extends Component {
             creator: null,
             image: null,
             description: null,
-            tags:[]
-            // parametre:[]
+            tags:[],
+            parametres:[]
         }
     }
     handleSubmit = (event) => { 
@@ -28,6 +28,11 @@ class Upload extends Component {
     updateTags = (tags) => {
         this.setState({
             tags: tags
+        })
+    }
+    updateParametres = (parametres) => {
+        this.setState({
+            parametres:parametres
         })
     }
 
@@ -75,12 +80,12 @@ class Upload extends Component {
                         <textarea onChange={this.handleInputChange} style={font_weight} name="description" className="form-control" id="description" rows="3"></textarea>
                     </div>
                     <div className="form-group">
+                        <label style={labelStyle} htmlFor="addParametreButton">Parametres:</label>
+                        <ParametreList action={this.updateParametres} name="parametre" />
+                    </div> 
+                    <div className="form-group">
                         <label style={labelStyle}>Tags:</label>
                         <Tag action={this.updateTags}/>
-                    </div>
-                    <div className="form-group">
-                        <label style={labelStyle} htmlFor="addParametreButton">Parametres:</label>
-                        <ParametreList name="parametre" />
                     </div>
                     <button className="btn btn-primary btn-lg btn-block" type="submit">Submit form</button>
                 </form>
