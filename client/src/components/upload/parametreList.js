@@ -43,8 +43,9 @@ class ParametreList extends Component {
         }
         this.setState(state => ({
             parametres: [...state.parametres, newParametre]
-
-        }), console.log(this.state));
+        }), ()=>{
+            this.props.action(this.state.parametres);
+        });
         let inputs = document.getElementById("addParametre").getElementsByTagName("input");
         console.log(inputs);
         for (var item of inputs) {
