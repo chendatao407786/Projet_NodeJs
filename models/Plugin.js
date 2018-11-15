@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PluginSchema = new Schema({
-    seller: {
-        name: {
-            type: String,
-            required:true
-        },
-        siteSellerUrl: {
-            type: String,
-            required: true
-        }        
+
+    sellerName: {
+        type: String,
+        required: true
     },
+    siteSellerUrl: {
+        type: String,
+        required: true
+    },
+
     creator: {
         type: String,
         required: true
@@ -20,26 +20,27 @@ const PluginSchema = new Schema({
         type: String,
         required: true
     },
-    description : {
+    description: {
         type: String
     },
     tag: {
-        type: [String]
+        type: [Object]
     },
-    parametres : [{
-        control : {
-            type : String
+    parametres: [{
+        type: Object,
+        control: {
+            type: String
         },
-        default : {
-            type : Number
-        },  
-        min : {
-            type : Number
+        default: {
+            type: Number
         },
-        max : {
-            type : Number
+        min: {
+            type: Number
+        },
+        max: {
+            type: Number
         }
-    }]    
+    }]
 })
 
-module.exports = Pligin = mongoose.model('Plugin',PluginSchema);
+module.exports = Pligin = mongoose.model('Plugin', PluginSchema);
