@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Tag from './tag';
+
 // import Parametre from './parametre';
 import ParametreList from './parametreList';
 class Upload extends Component {
@@ -8,49 +10,46 @@ class Upload extends Component {
         this.state = {
 
             sellerName: null,
-            sellerUrl: null,
+            siteSellerUrl: null,
             creator: null,
             image: null,
             description: null,
             tags: [],
-            parametres: []
+            parametres: [],
+            imageFile: null
         }
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        let data = {
-            seller: {
-                name: this.state.sellerName,
-                siteSellerUrl: this.state.sellerUrl
-            },
-            creator: this.state.creator,
-            imageUrl: this.state.image,
-            description: this.state.description,
-            tag: this.state.tags.text,
-            parametres: this.state.parametres
-        }
-        console.log(data);
-        // fetch('/api/plugin', {
-        //     method: 'POST',
-        //     body: data
-        //   });
-        fetch('/api/plugin', {
-            method: 'POST',
+        let data = new FormData();
+        data.append("sellerName",this.state.sellerName);
+        data.append("siteSellerUrl",this.state.sellerUrl);
+        data.append("creator",this.state.creator);
+        data.append("description",this.state.description);
+        data.append("tag",JSON.stringify(this.state.tag));
+        data.append("parametres",JSON.stringify(this.state.parametres));
+        data.append("imageFile",this.state.imageFile);
+
+        axios({
+            method: 'post',
+            url: '/api/plugin',
             headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                'content-type': 'multipart/form-data'
             },
-            body: JSON.stringify(data)
-        }).then(function(response) {
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            return response;
-        }).then(function(response) {
-            console.log("ok");
-        }).catch(function(error) {
-            console.log(error);
-        });
+            data: data
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+    handleFileSelected = (event) => {
+        event.preventDefault();
+        this.setState({
+            imageFile: event.target.files[0]
+        })
     }
     handleInputChange = (event) => {
         event.preventDefault();
@@ -60,7 +59,7 @@ class Upload extends Component {
     }
     updateTags = (tags) => {
         this.setState({
-            tags: tags
+            tag: tags
         })
     }
     updateParametres = (parametres) => {
@@ -93,7 +92,7 @@ class Upload extends Component {
                             <input style={font_weight} type="text" className="form-control" id="sellerName" name="sellerName" placeholder="Enter your name" onChange={this.handleInputChange} />
                         </div>
                         <div className="form-group col-md-6">
-                            <input onChange={this.handleInputChange} style={font_weight} type="text" className="form-control" id="sellerUrl" name="sellerUrl" placeholder="Enter the web site URL of your company" />
+                            <input onChange={this.handleInputChange} style={font_weight} type="text" className="form-control" id="siteSellerUrl" name="siteSellerUrl" placeholder="Enter the web site URL of your company" />
                         </div>
                     </div>
                     <div className="form-group">
@@ -103,7 +102,7 @@ class Upload extends Component {
                     <div className="form-group">
                         <label style={labelStyle} htmlFor="image">Plugin Image:</label>
                         <div className="custom-file" id="image">
-                            <input onChange={this.handleInputChange} style={font_weight} type="file" className="custom-file-input" id="image" name="image" required />
+                            <input accept="image/gif, image/jpeg, image/png" onChange={this.handleFileSelected} style={font_weight} type="file" className="custom-file-input" id="image" name="image" required />
                             <label style={font_weight} className="custom-file-label" htmlFor="validatedCustomFile">Choose file...</label>
                             <div className="invalid-feedback">Example invalid custom file feedback</div>
                         </div>
