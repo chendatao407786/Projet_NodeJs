@@ -34,7 +34,7 @@ class ParametreList extends Component {
     }
     addParametre() {
 
-        console.log(this.state.controler);
+        // console.log(this.state.controler);
         let newParametre = {
             controler: this.state.controler,
             default: this.state.default,
@@ -47,7 +47,7 @@ class ParametreList extends Component {
             this.props.action(this.state.parametres);
         });
         let inputs = document.getElementById("addParametre").getElementsByTagName("input");
-        console.log(inputs);
+        // console.log(inputs);
         for (var item of inputs) {
             item.value = "";
         }
