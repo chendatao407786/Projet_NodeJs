@@ -33,7 +33,8 @@ router.post('/', upload.single('imageFile'), (req, res) => {
         sellerName: req.body.sellerName,
         siteSellerUrl: req.body.siteSellerUrl,
         creator: req.body.creator,
-        imageUrl: imagePath+'/'+req.file.filename,
+        // imageUrl: imagePath+'/'+req.file.filename,
+        imageUrl: '/images/'+req.file.filename,
         description: req.body.description,
         tag: JSON.parse(req.body.tag),
         parametres: JSON.parse(req.body.parametres)
