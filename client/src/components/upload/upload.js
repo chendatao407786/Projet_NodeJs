@@ -24,7 +24,7 @@ class Upload extends Component {
         event.preventDefault();
         let data = new FormData();
         data.append("sellerName", this.state.sellerName);
-        data.append("siteSellerUrl", this.state.sellerUrl);
+        data.append("siteSellerUrl", this.state.siteSellerUrl);
         data.append("creator", this.state.creator);
         data.append("description", this.state.description);
         data.append("tag", JSON.stringify(this.state.tag));
@@ -139,7 +139,6 @@ class Upload extends Component {
                             <img id="imagePreview" style={previewImage} src={this.state.image} className="rounded float-right" alt='' />
                         </div>
                     </div>
-
                     <button className="btn btn-primary btn-lg" type="submit">Upload Plugin</button>
                 </form>
             </div>
