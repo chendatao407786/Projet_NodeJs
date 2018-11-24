@@ -29,7 +29,7 @@ class PluginList extends Component {
     }
     render() {
         let listPlugins = this.state.plugins.map((element, index) => {
-            return <PluginItem plugin={element} key={index}></PluginItem>
+            return <PluginItem isEmpty="false" plugin={element} key={index}></PluginItem> 
         })
         return (
 
@@ -40,6 +40,8 @@ class PluginList extends Component {
                 </div>
                 <div className="listPlugins">
                     {listPlugins}
+                    <PluginItem isEmpty="true"></PluginItem>
+                    <PluginItem isEmpty="true"></PluginItem>
                 </div>
             </div>
         )
