@@ -29,18 +29,25 @@ class PluginItem extends Component{
     }
     
     render(){
-        this.inspiredBy();
-        return(
-            <div className="container">
-                <div className="detail">
-                    <span id="title">{this.props.plugin.creator}</span>
-                    <img src={this.props.plugin.imageUrl} alt=''></img>
-                    <span className="sub-description">Inspired by <this.inspiredBy></this.inspiredBy></span>
-                    <span className="button">DETAILS</span>
+        if(this.props.isEmpty === "false"){
+            return(
+                <div className="plugin-item">
+                    <div className="detail">
+                        <span id="title">{this.props.plugin.creator}</span>
+                        <img src={this.props.plugin.imageUrl} alt=''></img>
+                        <span className="sub-description">Inspired by <this.inspiredBy></this.inspiredBy></span>
+                        <span className="button">DETAILS</span>
+                    </div>                
                 </div>
-                
-            </div>
-        );
+            );
+        }else{
+            return(
+                <div className="plugin-item empty">             
+                </div>
+            )
+        }
+
+        
     }
     
 }
