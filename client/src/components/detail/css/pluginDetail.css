@@ -1,0 +1,28 @@
+.detail-body{
+    background-color: rgb(246, 246, 246);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
+.main-box{
+    width: 755px;
+    height: inherit;
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 15px 0px;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.venteur{
+    width: 80%;
+    height: 45px;
+}
