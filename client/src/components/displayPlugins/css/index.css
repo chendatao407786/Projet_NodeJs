@@ -1,5 +1,6 @@
 .body{
     background-color: rgb(51, 51, 51);
+    height: 100%;
 }
 
 .titres{
@@ -67,6 +68,7 @@ img{
     transition-duration: 0.3s;
 }
 .button{
+    text-decoration: none;
     width: 144px;
     height: 65.9px;
     border: 2px solid rgb(255, 34, 0);
@@ -88,6 +90,7 @@ img{
 .detail:hover .button{
     background-color: rgb(255, 34, 0);
     color: white;
+    text-decoration: none;
 }
 .detail:hover .sub-description{
     color: black;
