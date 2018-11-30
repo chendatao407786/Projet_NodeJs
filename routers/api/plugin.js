@@ -22,6 +22,14 @@ router.get('/', (req, res) => {
         .then(plugins => res.json(plugins));
 });
 
+router.get('/:id',(req,res) => {
+    Plugin
+        .findById(req.params.id)
+        .then(plugin => {
+            res.json(plugin);
+        })
+})
+
 router.post('/upload', upload.single('image'), (req, res) => {
     console.log(req.file);
 })
