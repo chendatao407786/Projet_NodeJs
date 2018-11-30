@@ -1,0 +1,4 @@
+export const GET_PLUGINS = 'GET_PLUGINS';
+export const ADD_PLUGIN = 'ADD_PLUGIN';
+export const DELETE_PLUGIN = 'DELETE_PLUGIN';
+export const LOADING_PLUGIN = 'LOADING_PLUGIN';
