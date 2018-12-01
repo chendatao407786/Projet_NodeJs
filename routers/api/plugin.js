@@ -30,9 +30,9 @@ router.get('/:id',(req,res) => {
         })
 })
 
-router.post('/upload', upload.single('image'), (req, res) => {
-    console.log(req.file);
-})
+// router.post('/upload', upload.single('image'), (req, res) => {
+//     console.log(req.file);
+// })
 
 router.post('/', upload.single('imageFile'), (req, res) => {
     console.log(JSON.parse(req.body.tag));
