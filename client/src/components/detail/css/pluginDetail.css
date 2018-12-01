@@ -26,3 +26,39 @@
     width: 80%;
     height: 45px;
 }
+.font-weight-7{
+    font-weight: 700;
+}
+
+.creator{
+    color : rgb(136, 57, 150);
+    font-size: 27px; 
+    margin: 31.25px 0;
+    text-align: start;
+}
+
+.plugin-image{
+    height: 400px;
+}
+.tags-container{
+    display: flex;
+    justify-content: center;
+}
+.tag, .tag:hover{
+    padding: 5px;
+    background-color: #883996;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: .8em;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+}
+.desc{
+    font-family: 'Raleway', sans-serif;
+    color: rgb(68, 68, 68);
+    line-height: 1.5em;
+    white-space: pre-wrap;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
