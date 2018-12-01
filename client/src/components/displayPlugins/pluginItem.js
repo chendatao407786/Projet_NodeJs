@@ -36,7 +36,6 @@ class PluginItem extends Component {
         )
     }
     render() {
-        console.log(this.props);
         
         if (this.props.isEmpty === "false") {
             let detailButton = this.redirect();
