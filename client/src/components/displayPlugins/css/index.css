@@ -56,7 +56,7 @@ h2{
     line-height: 80px;
     transition-duration: 0.3s;
 }
-img{
+.detail img{
     height: 303.301px;
     /* width: 60%; */
     margin: 15px auto;
