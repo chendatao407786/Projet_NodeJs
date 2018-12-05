@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_PLUGINS,ADD_PLUGIN,DELETE_PLUGIN,LOADING_PLUGIN} from './types';
+import {GET_PLUGINS,GET_PLUGINS_BY_TAG,ADD_PLUGIN,DELETE_PLUGIN,LOADING_PLUGIN} from './types';
 // import Restaurant from '../components/Restaurant';
 
 export const getPlugins = () => dispatch => {    
@@ -9,6 +9,18 @@ export const getPlugins = () => dispatch => {
         .get('/api/plugin')
         .then(res => dispatch({
             type: GET_PLUGINS,
+            payload:res.data
+        }))
+
+};
+export const getPluginsByTag = (tag) => dispatch => {    
+    dispatch(setPluginsLoading());
+    console.log("getting plugins by tag");
+    let url_get_plugins_by_tag = '/api/plugin/tag/'+tag;
+    axios
+        .get(url_get_plugins_by_tag)
+        .then(res => dispatch({
+            type: GET_PLUGINS_BY_TAG,
             payload:res.data
         }))
 
