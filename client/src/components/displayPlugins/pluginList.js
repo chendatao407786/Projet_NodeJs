@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import PluginItem from './pluginItem';
 import { connect } from 'react-redux';
-import {getPlugins} from '../../actions/pluginActions';
+import {getPlugins,getPluginsByTag} from '../../actions/pluginActions';
 import PropTypes from 'prop-types';
-import store from '../../store';
 require('./css/index.css');
 class PluginList extends Component {
 
     componentWillMount() {
-        console.log("Component will mount");
-        // this.getPluginListData();
         this.props.getPlugins();
     }
     
@@ -35,6 +32,7 @@ class PluginList extends Component {
 }
 PluginList.propTypes = {
     getPlugins: PropTypes.func.isRequired,
+    getPluginsByTag: PropTypes.func.isRequired,
     plugin: PropTypes.object.isRequired
 }
 
@@ -42,4 +40,4 @@ const mapStateToProps = (state) => ({
     plugin : state.plugin
 })
 
-export default connect(mapStateToProps,{getPlugins})(PluginList);
+export default connect(mapStateToProps,{getPlugins,getPluginsByTag})(PluginList);
