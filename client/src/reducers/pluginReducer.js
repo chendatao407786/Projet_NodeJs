@@ -1,4 +1,4 @@
-import { GET_PLUGINS, ADD_PLUGIN, DELETE_PLUGIN, LOADING_PLUGIN } from '../actions/types';
+import { GET_PLUGINS, GET_PLUGINS_BY_TAG,ADD_PLUGIN, DELETE_PLUGIN, LOADING_PLUGIN } from '../actions/types';
 const initialState = {
     plugins: [],
     loading: false
@@ -12,6 +12,12 @@ export default function (state = initialState, action) {
                 plugins: action.payload,
                 loading:false
             };
+        case GET_PLUGINS_BY_TAG:
+            return {
+                ...state,
+                plugins: action.payload,
+                loading:false
+            }
         case DELETE_PLUGIN:
             return {
                 // ...state,
