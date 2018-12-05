@@ -3,7 +3,6 @@ const router = express.Router();
 const Plugin = require('../../models/Plugin');
 const path = require('path');
 const multer = require('multer');
-
 const imagePath = 'storage/images';
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -36,6 +35,23 @@ router.get('/tag/:tag',(req,res) => {
         .then(plugin => {
             res.json(plugin);
         })
+})
+router.get('/search/:keyword',(req,res) => {
+    console.log(req.params.keyword);
+    
+    Plugin
+        .find({
+            $text:{$search: req.params.keyword}},
+            {score:{$meta:'textScore'}
+        })
+        .sort({score:{$meta:'textScore'}})
+        .exec( (err, results) => {
+            if(!err){
+                res.json(results);
+            }else{
+                console.log(err);
+            }
+        }) 
 })
 
 // router.post('/upload', upload.single('image'), (req, res) => {
