@@ -39,6 +39,7 @@
 
 .plugin-image{
     height: 400px;
+    margin: 15px auto;
 }
 .tags-container{
     display: flex;
