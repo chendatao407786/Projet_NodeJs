@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
 const PluginSchema = new Schema({
 
     sellerName: {
@@ -43,4 +42,10 @@ const PluginSchema = new Schema({
     }]
 })
 
-module.exports = Pligin = mongoose.model('Plugin', PluginSchema);
+PluginSchema.index({
+    sellerName: 'text',
+    creator: 'text',
+    description: 'text'
+    // tag: 'text'
+});
+module.exports = Plugin = mongoose.model('Plugin', PluginSchema);
