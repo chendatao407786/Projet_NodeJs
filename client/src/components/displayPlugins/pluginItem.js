@@ -28,7 +28,7 @@ class PluginItem extends Component {
             <Link
                 className="button"
                 to={{
-                    pathname: '/plugindetail/' + this.props.plugin._id,
+                    pathname: '/plugin/' + this.props.plugin._id,
                     data: this.props.plugin
                 }}>
                 DETAILS
@@ -43,7 +43,7 @@ class PluginItem extends Component {
                 <div className="plugin-item">
                     <div className="detail">
                         <span id="title">{this.props.plugin.creator}</span>
-                        <img src={this.props.plugin.imageUrl} alt=''></img>
+                        <img className="item-photo" src={this.props.plugin.imageUrl} alt=''></img>
                         <span className="sub-description">Inspired by <this.inspiredBy></this.inspiredBy></span>
                         {detailButton}
                     </div>
