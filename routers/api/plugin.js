@@ -30,6 +30,14 @@ router.get('/:id',(req,res) => {
         })
 })
 
+router.get('/tag/:tag',(req,res) => {
+    Plugin
+        .find({tag : {$in:[ { "id" : req.params.tag, "text" : req.params.tag }]}})
+        .then(plugin => {
+            res.json(plugin);
+        })
+})
+
 // router.post('/upload', upload.single('image'), (req, res) => {
 //     console.log(req.file);
 // })
