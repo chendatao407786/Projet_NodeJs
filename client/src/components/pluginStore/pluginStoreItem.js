@@ -18,10 +18,7 @@ class PluginStoreItem extends Component {
             </Link>
         )
     }
-    render() {
-        console.log(this.props);
-        
-        
+    render() {        
         if (this.props.isEmpty === "false") {
             let plugin = this.props.plugin;
             let tags = plugin.tag.map((element, index) => {
