@@ -14,8 +14,6 @@ class App extends Component {
     console.log(store.getState());
   }
   render() {
-
-
     return (
       <Provider store={store}>
         <BrowserRouter>
@@ -25,7 +23,6 @@ class App extends Component {
             <Route path="/plugin/:id" component={PluginDetail} exact/>
             <Route path="/plugin-store" component={PluginStore} exact/>
             <Route path="/plugin-store/:tag" component={PluginStore}/>
-
           </div>
         </BrowserRouter>
       </Provider>
