@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const app = express();
 const plugin = require('./routers/api/plugin');
+const user = require('./routers/api/user');
+const auth = require('./routers/api/auth');
 const url = 'mongodb://chendatao:bonjour1941@ds039301.mlab.com:39301/plugin_store';
 // const url = 'mongodb://localhost:27017/plugin_store';
 
@@ -23,5 +25,7 @@ mongoose
     .catch(err => console.log(err));
 
 app.use('/api/plugin',plugin);
+app.use('/api/user',user);
+app.use('/api/auth',auth);
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log('server started at '+port));
