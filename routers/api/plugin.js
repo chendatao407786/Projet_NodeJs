@@ -4,6 +4,7 @@ const Plugin = require('../../models/Plugin');
 const path = require('path');
 const multer = require('multer');
 const imagePath = 'storage/images';
+const authentication = require('../../middlewares/auth');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, imagePath)
