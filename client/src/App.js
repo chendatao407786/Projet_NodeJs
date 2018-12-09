@@ -12,9 +12,9 @@ import store from './store';
 import SignUp from './components/auth/signUp';
 
 class App extends Component {
-  logger = () => {
-    console.log(store.getState());
-  }
+  // logger = () => {
+  //   console.log(store.getState());
+  // }
   render() {
     return (
       <Provider store={store}>
