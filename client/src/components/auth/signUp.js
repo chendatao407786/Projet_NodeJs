@@ -9,7 +9,6 @@ class SignUp extends Component {
             email: null,
             password: null
         }
-
     }
     handleSubmit = (event) => {
         event.preventDefault();
