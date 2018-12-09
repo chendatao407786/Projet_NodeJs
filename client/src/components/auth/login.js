@@ -10,6 +10,7 @@ class Login extends Component {
             password: null
         }
     }
+
     handleInputChange = (event) => {
         event.preventDefault();
         this.setState({
@@ -28,7 +29,13 @@ class Login extends Component {
             data: user
         })
             .then(function (response) {
-                console.log(response);
+
+                let token = response.data.token;
+                try{
+                    localStorage.setItem('token',String(token));
+                }catch(e){
+                    console.log(e)
+                }
             })
             .catch(function (error) {
                 if (error.response) {
