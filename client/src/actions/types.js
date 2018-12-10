@@ -4,3 +4,5 @@ export const GET_PLUGINS_BY_KEYWORD = 'GET_PLUGINS_BY_KEYWORD';
 export const ADD_PLUGIN = 'ADD_PLUGIN';
 export const DELETE_PLUGIN = 'DELETE_PLUGIN';
 export const LOADING_PLUGIN = 'LOADING_PLUGIN';
+
+export const ADD_USER = 'ADD_USER';
