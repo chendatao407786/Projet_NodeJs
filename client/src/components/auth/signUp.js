@@ -1,53 +1,63 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { userSignUpRequest } from '../../actions/signUpAction';
+import classnames from 'classnames';
 class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: null,
-            email: null,
-            password: null
+            username: '',
+            email: '',
+            password: '',
+            passwordConfirmation: '',
+            isLoading: false,
+            error: {}
         }
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        let data = this.state;
-        console.log(data);
-        axios({
-            method: 'post',
-            url: '/api/user',
-            headers: {
-                'content-type': 'application/json'
-            },
-            data: data
-        })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        this.setState({error:{},isLoading:true});
+        let user = this.state;
+        this.props.userSignUpRequest(user)
+            .then(
+                ()=>{},
+                ({response}) => {this.setState({
+                    error: response.data,
+                    isLoading:false
+                })}
+            )
     }
-   
     handleInputChange = (event) => {
         event.preventDefault();
         this.setState({
             [event.target.id]: event.target.value
         })
     }
-
     render() {
+        const {error} = this.state;
         return (
             <div className="login-body">
                 <div id="login">
                     <div className="inner">
                         <form id="loginForm" className="login_form inner" autoComplete="off" onSubmit={this.handleSubmit}>
-                            <input type="text" className="text_ login" id="username" placeholder="Username" onChange={this.handleInputChange}/>
-                            <input type="text" className="text_ login" id="email" placeholder="Email" onChange={this.handleInputChange}/>
-                            <input type="password" className="text_ login" id="password" placeholder="Password" onChange={this.handleInputChange}/>
-                            {/* <input type="password" className="text_ login" id="passwordConfi" placeholder="Password Confirmation" /> */}
-                            <input type="submit" className="buttons_ login buttons_login" id="submit" />
+                            <div className="sign-up-input-group">
+                                <input type="text" className={classnames("text_ login form-control",{"is-invalid":error.username})} id="username" placeholder="Username" onChange={this.handleInputChange} />
+                                {error.username && <span>{error.username}</span>}
+                            </div>
+                            <div className="sign-up-input-group">
+                                <input type="text" className={classnames("text_ login form-control",{"is-invalid":error.email})} id="email" placeholder="Email" onChange={this.handleInputChange} />
+                                {error.email && <span>{error.email}</span>}
+                            </div>
+                            <div className="sign-up-input-group">
+                                <input type="password" className={classnames("text_ login form-control",{"is-invalid":error.password})} id="password" placeholder="Password" onChange={this.handleInputChange} />
+                                {error.password && <span>{error.password}</span>}
+                            </div>
+                            <div className="sign-up-input-group">
+                                <input type="password" className={classnames("text_ login form-control",{"is-invalid":error.passwordConfirmation})} id="passwordConfirmation" placeholder="Password Confirmation" onChange={this.handleInputChange} />
+                                {error.passwordConfirmation && <span>{error.passwordConfirmation}</span>}
+                            </div>
+                            <button disabled={this.state.isLoading} className="btn buttons_ login buttons_login" id="submit">Button</button>
                         </form>
                     </div>
                 </div>
@@ -55,4 +65,10 @@ class SignUp extends Component {
         )
     }
 };
-export default SignUp;
+SignUp.propTypes = {
+    userSignUpRequest: PropTypes.func.isRequired
+}
+const mapStateToProps = (state) => ({
+    user: state
+})
+export default connect(mapStateToProps, { userSignUpRequest })(SignUp);
