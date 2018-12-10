@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 100vh;
     height: 100%;
-    background-image: url("https://www.moddevices.com/hubfs/assets/billboards/home-billboard.jpg");
+    background-image: url("https://www.moddevices.com/hubfs/assets/images/billboards/duo-pics-carl-mikael-5-812796-edited.jpg");
     background-repeat: no-repeat;
     /* background-size: 100%; */
     background-size: cover;
@@ -67,6 +67,9 @@ input:-webkit-autofill{
     text-decoration: none;
     color: white;
 }
+.buttons_register:disabled{
+    color:gray;
+}
 .buttons_login:hover{
     background-color: #1098e5;
 }
@@ -77,4 +80,17 @@ input:-webkit-autofill{
     position: absolute;
     overflow: visible;
     color: #ff1422;
+}
+.sign-up-input-group{
+    position: relative;
+}
+.sign-up-input-group span{
+    height: 40px;
+    line-height: 40px;
+    margin: 5px 0;
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    left: 370px;
+    color: red;
 }
