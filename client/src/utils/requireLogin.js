@@ -11,6 +11,11 @@ export default function(ComponentSecured) {
                 this.context.router.history.push("/login");
             }
         }
+        componentWillUpdate(nextProps){
+            if(!nextProps.isAuth){
+                this.context.router.history.push("/");
+            }
+        }
         render(){
             return(
                 <ComponentSecured {...this.props}/>
