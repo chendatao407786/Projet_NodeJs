@@ -6,13 +6,6 @@ export const userSignUpRequest = (user) => dispatch => {
     return(
         axios
         .post('/api/user',user)
-        // .then(res => {
-        //     console.log(res);
-        // })
-        // .catch(e => {
-        //     // console.log(e.response); 
-        //     return(e.response);
-        // })
     )
     
         
