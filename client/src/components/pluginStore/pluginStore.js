@@ -4,18 +4,21 @@ import { connect } from 'react-redux';
 import {getPlugins,getPluginsByTag,getPluginsByKeyWord} from '../../actions/pluginActions';
 import PropTypes from 'prop-types';
 import searchLogo from '../../img/search.png';
-import { prototype } from 'events';
+// import { prototype } from 'events';
 require('./pluginStore.css');
 class PluginStore extends Component {
     constructor(props){
         super(props);
         this.state={
-            keyword:''
+            keyword:'',
+            tag:''
         }
         this.inputOnChange = this.inputOnChange.bind(this);
         this.searchHandler = this.searchHandler.bind(this);
     }
-    componentWillMount() {
+    componentDidMount() {
+        console.log("component did mount");
+        
         let pathname = this.props.location.pathname;
         if(pathname==="/plugin-store"){
             this.props.getPlugins();
@@ -43,7 +46,7 @@ class PluginStore extends Component {
     }
     render() {        
         let listPlugins = this.props.plugin.plugins.map((element, index) => {
-            return <PluginStoreItem isEmpty="false" plugin={element} key={index}></PluginStoreItem> 
+            return <PluginStoreItem isEmpty="false" plugin={element} key={index} getPluginsByTag={this.props.getPluginsByKeyWord}></PluginStoreItem> 
         })
         return (
             <div className="store-body">
