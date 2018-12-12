@@ -98,8 +98,7 @@ class Upload extends Component {
         }
         const uploadImage = {
             width: '25%',
-        }
-
+        }        
         return (
 
             <div style={divStyle}>
