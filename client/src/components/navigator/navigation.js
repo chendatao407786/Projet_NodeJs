@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {logout} from '../../actions/loginAction';
 import PropTypes from 'prop-types';
 require('./navigator.css');
 class Navigation extends Component {
     logout = () => {
-
+        this.props.logout();
+        console.log(this.props);
     }
     render() {
         let userLogin = (<li><NavLink to="/login">Sign in/Sign up</NavLink></li>);
@@ -33,11 +35,11 @@ class Navigation extends Component {
                     <div className="header">
                         <div className="site-header__logo center">
                             <NavLink to="/">
-                                <img src="https://www.moddevices.com/hubfs/assets/logos/mod-devices-logo-on-dark.png" />
+                                <img src="https://www.moddevices.com/hubfs/assets/logos/mod-devices-logo-on-dark.png" alt=''/>
                             </NavLink>
                         </div>
                         <ul className="site-header__main-menu center">
-                            <li><a>Product</a></li>
+                            <li><NavLink to="#">Product</NavLink></li>
                             <li className="first-level-menu">
                                 <NavLink to="/plugin-store">Plugin Gallery</NavLink>
                                 <ul className="second-level-menu">
@@ -46,14 +48,14 @@ class Navigation extends Component {
                                     <li>Classic</li>
                                 </ul>
                             </li>
-                            <li><a>Play</a></li>
-                            <li><a>Learn</a></li>
-                            <li><a>Community</a></li>
+                            <li><NavLink to="#">Play</NavLink></li>
+                            <li><NavLink to="#">Learn</NavLink></li>
+                            <li><NavLink to="#">Community</NavLink></li>
                         </ul>
                         <ul className="site-header__secondary-menu center">
-                            <li><a>About</a></li>
-                            <li><a>Contact</a></li>
-                            <li><a>Blog</a></li>
+                            <li><NavLink to="#">About</NavLink></li>
+                            <li><NavLink to="#">Contact</NavLink></li>
+                            <li><NavLink to="#">Blog</NavLink></li>
                             {/* {this.props.auth.isSignIn?userLogin:userNotLogin} */}
                             {/* <li><NavLink to="/login">Sign in/Sign up</NavLink></li> */}
                             {this.props.auth.isSignIn ? userLogin : userNotLogin}
@@ -65,9 +67,10 @@ class Navigation extends Component {
     }
 }
 Navigation.propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired
 }
 const mapStateToProps = (state) => ({
     auth: state.auth
 })
-export default connect(mapStateToProps, {})(Navigation);
+export default connect(mapStateToProps, {logout})(Navigation);
