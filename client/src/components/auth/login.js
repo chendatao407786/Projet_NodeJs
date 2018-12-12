@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
+import PropTypes from 'prop-types';
+import {login} from '../../actions/loginAction';
+import { connect } from 'react-redux';
 require('./login.css');
 class Login extends Component {
     constructor(props){
@@ -20,33 +22,32 @@ class Login extends Component {
     submitHandler = (event) => {
         event.preventDefault();
         let user = this.state;
-        axios({
-            method: 'post',
-            url: '/api/auth',
-            headers: {
-                'content-type': 'application/json'
-            },
-            data: user
-        })
-            .then(function (response) {
+        this.props.login(user);
+        this.props.history.push("/");
+        // axios({
+        //     method: 'post',
+        //     url: '/api/auth',
+        //     data: user
+        // })
+        //     .then(function (response) {
 
-                let token = response.data.token;
-                try{
-                    localStorage.setItem('token',String(token));
-                }catch(e){
-                    console.log(e)
-                }
-            })
-            .catch(function (error) {
-                if (error.response) {
-                  // The request was made and the server responded with a status code
-                  // that falls out of the range of 2xx
-                  console.log(error.response.data);
-                } 
-              });
-            // .catch(function (error) {
-            //     console.log(error);
-            // });
+        //         let token = response.data.token;
+        //         try{
+        //             localStorage.setItem('token',String(token));
+        //         }catch(e){
+        //             console.log(e)
+        //         }
+        //     })
+        //     .catch(function (error) {
+        //         if (error.response) {
+        //           // The request was made and the server responded with a status code
+        //           // that falls out of the range of 2xx
+        //           console.log(error.response.data);
+        //         } 
+        //       });
+        //     // .catch(function (error) {
+        //     //     console.log(error);
+        //     // });
     }
     render() {
         return (
@@ -68,4 +69,10 @@ class Login extends Component {
         )
     }
 }
-export default Login;
+Login.propTypes={
+    login: PropTypes.func.isRequired
+}
+const mapStateToProps = (state) => ({
+    user: state.user
+})
+export default connect(mapStateToProps,{login})(Login);
