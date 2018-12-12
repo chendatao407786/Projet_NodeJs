@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.get('/', (req, res) => {
+router.get('/',(req, res) => {
     Plugin
         .find()
         .then(plugins => res.json(plugins));
@@ -59,7 +59,7 @@ router.get('/search/:keyword',(req,res) => {
 //     console.log(req.file);
 // })
 
-router.post('/', upload.single('imageFile'), (req, res) => {
+router.post('/', authentication.verifyToken,upload.single('imageFile'), (req, res) => {
     console.log(JSON.parse(req.body.tag));
     console.log("post method called");
     const newPlugin = new Plugin({
