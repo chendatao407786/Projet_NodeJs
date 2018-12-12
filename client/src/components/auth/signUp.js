@@ -27,9 +27,9 @@ class SignUp extends Component {
         this.props.userSignUpRequest(user)
             .then(
                 () => {
-                    this.props.history.push("/login");
+                    // this.props.history.push("/login");
                     this.props.addFlashMessage("Sign up successfully");
-                    // this.context.router.history.push("/login");
+                    this.context.router.history.push("/login");
                 },
                 ({ response }) => {
                     this.setState({
