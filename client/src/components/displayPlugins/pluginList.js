@@ -5,7 +5,6 @@ import {getPlugins,getPluginsByTag} from '../../actions/pluginActions';
 import PropTypes from 'prop-types';
 require('./css/index.css');
 class PluginList extends Component {
-
     componentWillMount() {
         this.props.getPlugins();
     }
@@ -14,6 +13,7 @@ class PluginList extends Component {
         let listPlugins = this.props.plugin.plugins.map((element, index) => {
             return <PluginItem isEmpty="false" plugin={element} key={index}></PluginItem> 
         })
+        
         return (
 
             <div className="body">
@@ -37,7 +37,7 @@ PluginList.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-    plugin : state.plugin
+    plugin: state.plugin
 })
 
 export default connect(mapStateToProps,{getPlugins,getPluginsByTag})(PluginList);
