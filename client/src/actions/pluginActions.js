@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_PLUGINS,GET_PLUGINS_BY_TAG,GET_PLUGINS_BY_KEYWORD,ADD_PLUGIN,DELETE_PLUGIN,LOADING_PLUGIN} from './types';
+import {GET_PLUGINS,GET_PLUGINS_BY_TAG,GET_PLUGINS_BY_KEYWORD,DELETE_PLUGIN,LOADING_PLUGIN} from './types';
 export const getPlugins = () => dispatch => {    
     dispatch(setPluginsLoading());
     console.log("getting plugins");
