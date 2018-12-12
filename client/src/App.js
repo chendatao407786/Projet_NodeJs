@@ -15,6 +15,7 @@ import Navigation from './components/navigator/navigation';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import { setCurrentUser } from './actions/loginAction';
 import jwtDecode from 'jwt-decode';
+import requireLogin from './utils/requireLogin';
 
 class App extends Component {
   // logger = () => {
@@ -33,10 +34,11 @@ class App extends Component {
             <Navigation />
             <Switch>
               <Route path="/" component={PluginList} exact />
-              <Route path="/plugins/upload" component={Upload} exact/>
+              <Route path="/plugins/upload" component={requireLogin(Upload)} exact/>
               <Route path="/plugin/:id" component={PluginDetail} exact />
-              <Route path="/plugin-store" component={PluginStore} exact />
-              <Route path="/plugin-store/:tag" component={PluginStore} />
+              {/* route设置key可以使其切换路由是启动unmount */}
+              <Route path="/plugin-store" component={PluginStore} exact key={1}/>
+              <Route path="/plugin-store/:tag" component={PluginStore} key={2}/>
               <Route path="/login" component={Login} />"
               <Route path="/sign-up" component={SignUp} />
               <Route component={Error} />
