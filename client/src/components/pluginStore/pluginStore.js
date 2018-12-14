@@ -44,7 +44,8 @@ class PluginStore extends Component {
         // }
         // return <Link to={pluginsFindByTagPath} key={index} className="tag">{element.id}</Link>
     }
-    render() {        
+    render() {
+        console.log(this.props.plugin.plugins);    
         let listPlugins = this.props.plugin.plugins.map((element, index) => {
             return <PluginStoreItem isEmpty="false" plugin={element} key={index} getPluginsByTag={this.props.getPluginsByKeyWord}></PluginStoreItem> 
         })
