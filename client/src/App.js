@@ -17,6 +17,7 @@ import { setCurrentUser } from './actions/loginAction';
 import jwtDecode from 'jwt-decode';
 import requireLogin from './utils/requireLogin';
 import myPlugins from './components/myAccount/myPlugins';
+import modifyMyPlugin from './components/myAccount/modifyMyPlugin';
 
 class App extends Component {
   render() {
@@ -38,7 +39,8 @@ class App extends Component {
               <Route path="/plugin-store/:tag" component={PluginStore} key={2}/>
               <Route path="/login" component={Login} />"
               <Route path="/sign-up" component={SignUp} />
-              <Route path="/myPlugins" component={myPlugins}/>
+              <Route path="/myPlugins" component={requireLogin(myPlugins)} exact/>
+              <Route path="/myPlugins/:id" component={modifyMyPlugin}/>
               <Route component={Error} />
             </Switch>
           </div>
