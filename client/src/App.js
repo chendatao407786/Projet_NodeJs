@@ -16,12 +16,9 @@ import setAuthorizationToken from './utils/setAuthorizationToken';
 import { setCurrentUser } from './actions/loginAction';
 import jwtDecode from 'jwt-decode';
 import requireLogin from './utils/requireLogin';
+import myPlugins from './components/myAccount/myPlugins';
 
 class App extends Component {
-  // logger = () => {
-  //   console.log(store.getState());
-  // }
-  
   render() {
     if(localStorage.jwtToken){
       setAuthorizationToken(localStorage.jwtToken);
@@ -41,6 +38,7 @@ class App extends Component {
               <Route path="/plugin-store/:tag" component={PluginStore} key={2}/>
               <Route path="/login" component={Login} />"
               <Route path="/sign-up" component={SignUp} />
+              <Route path="/myPlugins" component={myPlugins}/>
               <Route component={Error} />
             </Switch>
           </div>
