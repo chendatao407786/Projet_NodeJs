@@ -1,0 +1,15 @@
+.my-plugin-button{
+    padding: 5px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: .8em;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+}
+.modify{
+    background-color: cadetblue;
+}
+.delete{
+    background-color: red;
+}
