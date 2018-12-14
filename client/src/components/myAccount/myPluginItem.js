@@ -12,8 +12,12 @@ class MyPluginItem extends Component {
             </Link>
         )
     }
+    onClickHandler = (e) => {
+        e.preventDefault();
+        
+    }
     render() {
-        console.log(this.props.plugin)
+        let modifyPath = '/myPlugins/'+this.props.plugin._id;
         if (this.props.isEmpty === "false") {
             let plugin = this.props.plugin;
             
@@ -21,7 +25,8 @@ class MyPluginItem extends Component {
             return (
                 <div className="store-item whiteframe">
                     {image}
-                    <button className="my-plugin-button modify">Modify</button>
+                    {/* <button className="my-plugin-button modify">Modify</button> */}
+                    <Link to={modifyPath} className="my-plugin-button modify">Modify</Link>
                     <button className="my-plugin-button delete">Delete</button>
                     <div className="divider"></div>
                     <div className="plugin-info-container">
