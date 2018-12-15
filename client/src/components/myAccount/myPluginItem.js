@@ -14,9 +14,11 @@ class MyPluginItem extends Component {
     }
     onClickHandler = (e) => {
         e.preventDefault();
-        
+        this.props.deletePlugin(this.props.userId,this.props.plugin._id);
     }
     render() {
+        console.log(this.props.plugin);
+        
         let modifyPath = '/myPlugins/'+this.props.plugin._id;
         if (this.props.isEmpty === "false") {
             let plugin = this.props.plugin;
@@ -27,7 +29,7 @@ class MyPluginItem extends Component {
                     {image}
                     {/* <button className="my-plugin-button modify">Modify</button> */}
                     <Link to={modifyPath} className="my-plugin-button modify">Modify</Link>
-                    <button className="my-plugin-button delete">Delete</button>
+                    <button className="my-plugin-button delete" onClick={this.onClickHandler}>Delete</button>
                     <div className="divider"></div>
                     <div className="plugin-info-container">
                         <Link to="#" className="store-creator">{plugin.creator}</Link>
