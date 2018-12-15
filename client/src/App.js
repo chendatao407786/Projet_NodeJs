@@ -40,7 +40,7 @@ class App extends Component {
               <Route path="/login" component={Login} />"
               <Route path="/sign-up" component={SignUp} />
               <Route path="/myPlugins" component={requireLogin(myPlugins)} exact/>
-              <Route path="/myPlugins/:id" component={modifyMyPlugin}/>
+              <Route path="/myPlugins/:id" component={requireLogin(modifyMyPlugin)}/>
               <Route component={Error} />
             </Switch>
           </div>
