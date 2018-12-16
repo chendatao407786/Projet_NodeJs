@@ -34,8 +34,8 @@ class PluginStoreItem extends Component {
                     {tags}
                     <div className="divider"></div>
                     <div className="plugin-info-container">
-                        <button className="store-creator">{plugin.creator}</button>
-                        <button className="brand">{plugin.sellerName}</button>
+                        <Link to="#" className="store-creator">{plugin.creator}</Link>
+                        <Link to="#" className="brand">{plugin.sellerName}</Link>
                     </div>
                 </div>
             );
