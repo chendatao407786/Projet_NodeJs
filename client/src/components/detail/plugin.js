@@ -44,11 +44,15 @@ class PluginDetail extends Component {
         let tags;
         let parametres
         console.log((this.props.plugin));
+
         
         if(!isEmpty(this.props.plugin)){
             let plugin = this.props.plugin;
             tags = plugin.tag.map((element, index) => {
-                return <Link to="#" key={index} className="tag">{element.text}</Link>
+                let pluginsFindByTagPath = {
+                    pathname: '/plugin-store/'+element.id+'/'
+                }
+                return <Link to={pluginsFindByTagPath} key={index} className="tag">{element.text}</Link>
             })
             parametres = plugin.parametres.map((element, index) => {
                 return (
