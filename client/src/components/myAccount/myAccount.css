@@ -7,9 +7,14 @@
     margin: 5px;
     border-radius: 5px;
 }
-.modify{
+.modify,.modify:hover{
+    text-decoration: none;
     background-color: cadetblue;
+    color: white;
+    
 }
 .delete{
+    cursor: pointer;
     background-color: red;
+
 }
