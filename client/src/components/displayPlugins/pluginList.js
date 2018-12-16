@@ -3,7 +3,6 @@ import PluginItem from './pluginItem';
 import { connect } from 'react-redux';
 import { getPlugins } from '../../actions/pluginActions';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
 require('./css/index.css');
 class PluginList extends Component {
     componentWillMount() {
