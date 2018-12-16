@@ -59,7 +59,7 @@ router.get('/search/:keyword', (req, res) => {
         })
 })
 
-router.delete('/:userId/:id', (req, res) => {
+router.delete('/:userId/:id', authentication.verifyToken, (req, res) => {
     console.log(req.params.id);
 
     Plugin.deleteOne(
@@ -112,7 +112,7 @@ router.post('/', authentication.verifyToken, upload.single('imageFile'), (req, r
         { new: true },
         function (err, user) {
             if (!err) {
-                res.send("update success: "+user.plugins)
+                res.send("update success: " + user.plugins)
             } else {
                 res.send(err)
             }
@@ -122,7 +122,7 @@ router.post('/', authentication.verifyToken, upload.single('imageFile'), (req, r
 
 });
 
-router.put('/:id', upload.single('imageFile'), (req, res) => {
+router.put('/:id', authentication.verifyToken, upload.single('imageFile'), (req, res) => {
     console.log(req.body);
     Plugin.findByIdAndUpdate(
         new mongoose.Types.ObjectId(req.params.id),
