@@ -1,5 +1,5 @@
 .store-body{
-    width: 100%;
+    min-width: 100%;
     background-color: #f6f6f6;
 }
 .store-plugins-container{

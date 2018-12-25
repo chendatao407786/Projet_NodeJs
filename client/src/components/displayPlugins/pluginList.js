@@ -15,7 +15,7 @@ class PluginList extends Component {
         })
 
             return (
-                <div className="body">
+                <div className="list-body">
                     <div className="titres">
                         <h2>Inspiration in all the Classics</h2>
                         <span className="sub-description">All the famous stompboxes, FX, synths, sequencers and amps that made history</span>
