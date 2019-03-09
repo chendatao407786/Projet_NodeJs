@@ -9,7 +9,6 @@
     font-size: 20px;
     justify-content: flex-start;
 }
-
 .center{
     display: flex;
     justify-content: center;
@@ -24,7 +23,10 @@
     display: flex;
     color: white;
 }
-
+a.active {
+    display: flex;
+    align-items: center;
+}
 .site-header__main-menu a,.site-header__main-menu a:hover{
     color: white;
     text-decoration: white;
@@ -58,8 +60,6 @@
 .site-header__secondary-menu li,a{
     color: rgb(153, 153, 153);
     height: inherit;
-    display: flex;
-    align-items: center;
 }
 
 .site-header__secondary-menu a{
