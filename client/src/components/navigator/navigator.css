@@ -17,6 +17,7 @@
 }
 .site-header__logo{
     width: 20%;
+    height: 100%;
 }
 .site-header__main-menu{
     width: 50%;
@@ -57,6 +58,8 @@
 .site-header__secondary-menu li,a{
     color: rgb(153, 153, 153);
     height: inherit;
+    display: flex;
+    align-items: center;
 }
 
 .site-header__secondary-menu a{
